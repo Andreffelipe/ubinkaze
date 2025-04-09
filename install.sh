@@ -38,12 +38,12 @@ print_success() {
   print_message "${GREEN}" "SUCCESS: $1"
 }
 
-check_root() {
-  if [[ $EUID -ne 0 ]]; then
-    print_error "This script must be run as root"
-    exit 1
-  fi
-}
+#check_root() {
+#  if [[ $EUID -ne 0 ]]; then
+#    print_error "This script must be run as root"
+#    exit 1
+#  fi
+#}
 
 check_os() {
   if ! command -v lsb_release >/dev/null 2>&1; then
@@ -173,7 +173,7 @@ trap 'handle_error ${LINENO}' ERR
 
 # --- Pre-flight Checks ---
 print_message "${YELLOW}" "Performing pre-flight checks..."
-check_root
+#check_root
 check_os
 check_resources
 
